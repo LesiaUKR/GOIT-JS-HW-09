@@ -26,7 +26,7 @@ function startColorChange() {
 
 function stopColorChange() {
     btnStart.disabled = false;
-    btnStop.disabled = false;
+    btnStop.disabled = true;
     
   clearInterval(timerId);
 }
