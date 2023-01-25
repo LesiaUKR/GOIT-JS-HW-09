@@ -15,8 +15,8 @@ btnStart.addEventListener('click', startColorChange);
 btnStop.addEventListener('click', stopColorChange);
 
 function startColorChange() {
-    btnStart.disabled = false;
-    btnStop.disabled = true;
+    btnStart.disabled = true;
+    btnStop.disabled = false;
     
     timerId = setInterval(() => {
         let color = getRandomHexColor();
@@ -25,7 +25,7 @@ function startColorChange() {
 }
 
 function stopColorChange() {
-    btnStart.disabled = true;
+    btnStart.disabled = false;
     btnStop.disabled = false;
     
   clearInterval(timerId);
