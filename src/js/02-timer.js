@@ -19,9 +19,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    endDate = selectedDates[0];
-    console.log(selectedDates[0]);
-    if (endDate <= new Date()) {
+    if (selectedDates[0] <= new Date()) {
       console.log(Notiflix.Notify.failure('Please choose a date in the future', { position: 'center-top', clickToClose: true }));
     } else {
       startBtn.disabled = false;
@@ -53,17 +51,14 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
-
 function onStart() {
-    timerId = setInterval(() => {
+  startBtn.disabled = true;
+  input.disabled = true;
 
+    timerId = setInterval(() => {
     let countDown = new Date(input.value) - new Date();
         if (countDown >= 0) {
             let time = convertMs(countDown)
-   
             dataDays.textContent = addLeadingZero(time.days);
             dataHours.textContent = addLeadingZero(time.hours);
             dataMinutes.textContent = addLeadingZero(time.minutes);
